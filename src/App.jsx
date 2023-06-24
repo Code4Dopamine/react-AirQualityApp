@@ -1,56 +1,119 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
 import './App.css'
-import * as Checkbox from '@radix-ui/react-checkbox';
-import { CheckIcon } from '@radix-ui/react-icons';
+import CitySearch from './components/CitySearch'
+import AirQualityCard from './components/AirQualityCard'
+// require('dotenv').config()
 
+
+
+// console.log(getAirQuality("Toronto"))
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const temp = getAirQuality("Toronto")
+  const temp = import.meta.env.VITE_API_KEY
+  const [airQualityData, setAirQualityData] = useState(null)
+  const [error, setError] = useState(null)
+
+  const getAirQuality = async (city) => {
+    try {
+      const response = await fetch(`http://api.waqi.info/feed/${city}/?token=${import.meta.env.VITE_API_KEY}`)
+
+      const data = await response.json()
+      console.log(data)
+
+      if (response.ok && data.status === 'ok') {
+        setAirQualityData(data.data)
+        setError(null)
+      } else {
+        setError("Can't find city. Try another location or check if city name is correct")
+        setAirQualityData(null)
+      }
+
+    } catch (error) {
+      console.error("Error: ", error)
+      setError("Sorry, something went wrong...")
+      //set error state
+      // set air quality data to null
+    }
+  }
 
   return (
     <>
-      <div className='bg-slate-500 h-screen'>
-        <div>
-          <a href="https://vitejs.dev" target="_blank">
-            <img src={viteLogo} className="logo" alt="Vite logo" />
-          </a>
-          <a href="https://react.dev" target="_blank">
-            <img src={reactLogo} className="logo react" alt="React logo" />
-          </a>
-        </div>
-        <h1 className=''>Vite + React</h1>
-        <div className="card">
-          <button className="bg-indigo-500 p-2 rounded-full text-white active:bg-red-300 active:text-black focus:ring-4 focus:ring-lime-600" onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button>
+      <div className='bg-slate-300 h-screen pt-10 px-10'>
+        <h1 className='text-4xl font-semibold'>Air Quality Index Checker</h1>
+
+
+        {/* Search Component */}
+        <CitySearch getAirQuality={getAirQuality} />
+
+        {error && (
+          <div className='alert alert-danger' role='alert'>
+            {error}
+          </div>
+        )}
+        {airQualityData && (
+          <>
+            {/* Air Quality Card Component */}
+            <AirQualityCard data={airQualityData} />
+          </>
+        )}
+
+
+        {/* Card Design */}
+        {/* <div className="border w-2/3 mx-5">
           <p>
-            Edit <code>src/App.jsx</code> and save to test HMR
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum pariatur libero quaerat nostrum sit aut expedita doloremque, ut ea repudiandae!
           </p>
         </div>
-        <p className="read-the-docs">
-          Click on the Vite and React logos to learn more
-        </p>
-        {/* <span className='fi fi-jp fis bg-indigo-500 w-full'></span> */}
-        <img
-          src="https://flagcdn.com/za.svg"
-          width="16"
-          alt="South Africa"></img>
-        <form>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Checkbox.Root className="CheckboxRoot" defaultChecked id="c1">
-              <Checkbox.Indicator className="CheckboxIndicator">
-                <CheckIcon />
-              </Checkbox.Indicator>
-            </Checkbox.Root>
-            <label className="Label" htmlFor="c1">
-              Accept terms and conditions.
-            </label>
-          </div>
-        </form>
-      </div>
+        <div>
+          <p>
+            {temp}
+          </p>
+        </div> */}
 
+        {/* Table Component */}
+        <div className="border rounded-xl my-5">
+          <table className="table table-zebra">
+            {/* head */}
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Job</th>
+                <th>Favorite Color</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* row 1 */}
+              <tr>
+                <th>1</th>
+                <td>Cy Ganderton</td>
+                <td>Quality Control Specialist</td>
+                <td>Blue</td>
+              </tr>
+              {/* row 2 */}
+              <tr>
+                <th>2</th>
+                <td>Hart Hagerty</td>
+                <td>Desktop Support Technician</td>
+                <td>Purple</td>
+              </tr>
+              {/* row 3 */}
+              <tr>
+                <th>3</th>
+                <td>Brice Swyre</td>
+                <td>Tax Accountant</td>
+                <td>Red</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+      </div>
     </>
   )
 }
