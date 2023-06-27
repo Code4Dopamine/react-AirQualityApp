@@ -31,14 +31,14 @@ const AirQualityCard = ({ data }) => {
     return (
         <>
             {/* Color Test */}
-            <div>
+            {/* <div>
                 <button className={`button ${getCardColor(50)}`}>Good</button>
                 <button className={`button ${getCardColor(100)}`}>Moderate</button>
                 <button className={`button ${getCardColor(150)}`}>Unhealthy(s)</button>
                 <button className={`button ${getCardColor(200)}`}>Unhealthy</button>
                 <button className={`button ${getCardColor(300)}`}>Very UnHealthy</button>
                 <button className={`button ${getCardColor(350)}`}>Hazardous</button>
-            </div>
+            </div> */}
             {/* <div className={`p-5 border rounded-xl my-2 `}> */}
             <div className={`card shadow-xl ${color}`}>
                 <div className="card-body">
