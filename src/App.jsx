@@ -44,18 +44,29 @@ function App() {
         <CitySearch getAirQuality={getAirQuality} />
 
         {error && (
-          <div className='alert alert-danger' role='alert'>
+          <div className='card flex items-center justify-center bg-slate-200 h-20' role='alert'>
             {error}
           </div>
         )}
-        {airQualityData && (
-          <>
-            {/* Air Quality Card Component */}
-            <AirQualityCard data={airQualityData} />
-            {/* Pollutant Info Card  */}
-            <PollutantInfo pollutant={airQualityData.dominentpol} />
-          </>
-        )}
+        {
+          airQualityData ?
+            (<>
+              {/* Air Quality Card Component */}
+              <AirQualityCard data={airQualityData} />
+              {/* Pollutant Info Card  */}
+              <PollutantInfo pollutant={airQualityData.dominentpol} />
+            </>) :
+            (error ?
+              (<>
+              </>) :
+              (<>
+                <div className="card flex items-center justify-center bg-slate-200 h-20">
+                  <p>Type in a city name above to show Air Quality Info</p>
+                </div>
+              </>))
+        }
+
+        {/* Previous Code */}
 
         {/* Air Quality Level - Table Component */}
         <AirQualityLevelsTable />
