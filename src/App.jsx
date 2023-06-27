@@ -8,10 +8,6 @@ import PollutantInfo from './components/PollutantInfo'
 import AirQualityLevelsTable from './components/AirQualityLevelsTable'
 // require('dotenv').config()
 
-
-
-// console.log(getAirQuality("Toronto"))
-
 function App() {
   // const temp = getAirQuality("Toronto")
   const temp = import.meta.env.VITE_API_KEY
@@ -36,8 +32,6 @@ function App() {
     } catch (error) {
       console.error("Error: ", error)
       setError("Sorry, something went wrong...")
-      //set error state
-      // set air quality data to null
     }
   }
 
@@ -45,7 +39,6 @@ function App() {
     <>
       <div className='min-h-screen p-10'>
         <h1 className='text-4xl font-semibold'>Air Quality Index Checker</h1>
-
 
         {/* Search Component */}
         <CitySearch getAirQuality={getAirQuality} />
@@ -63,7 +56,6 @@ function App() {
             <PollutantInfo pollutant={airQualityData.dominentpol} />
           </>
         )}
-
 
         {/* Air Quality Level - Table Component */}
         <AirQualityLevelsTable />

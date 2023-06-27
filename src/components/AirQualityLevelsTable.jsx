@@ -2,12 +2,12 @@ import React from 'react'
 
 const AirQualityLevelsTable = () => {
   const levels = [
-    { range: '0 - 50', level: 'Good'},
-    { range: '51 - 100', level: 'Moderate'},
-    { range: '101 - 150', level: 'Unhealthy for Sensitive Groups'},
-    { range: '151 - 200', level: 'Unhealthy'},
-    { range: '201 - 300', level: 'Very Unhealthy'},
-    { range: '301 and higher', level: 'Hazardous'},
+    { color: 'bg-emerald-100', range: '0 - 50', level: 'Good' },
+    { color: 'bg-yellow-100', range: '51 - 100', level: 'Moderate' },
+    { color: 'bg-orange-200', range: '101 - 150', level: 'Unhealthy for Sensitive Groups' },
+    { color: 'bg-rose-200', range: '151 - 200', level: 'Unhealthy' },
+    { color: 'bg-purple-100', range: '201 - 300', level: 'Very Unhealthy' },
+    { color: 'bg-red-300', range: '301 and higher', level: 'Hazardous' },
   ];
 
   return (
@@ -15,31 +15,34 @@ const AirQualityLevelsTable = () => {
 
       <div className='card-body'>
         <h3 className='card-title'>Air Quality Levels</h3>
-            <table className="table table-zebra table-">
-              {/* head */}
-              <thead>
-                <tr>
-                  {/* <th></th> */}
-                  <th className='text-lg text-neutral-700 font-semibold'>AQI Range</th>
-                  <th className='text-lg text-neutral-700 font-semibold whitespace-pre-wrap'> Level of Health Concern</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* Sample Row
+        <div className="divider"></div>
+        <table className="table bg-white">
+          {/* head */}
+          <thead>
+            <tr>
+              {/* <th></th> */}
+              <th className='text-lg text-neutral-700 font-semibold'>AQI Range</th>
+              <th className='text-lg text-neutral-700 font-semibold whitespace-pre-wrap'> Level of Health Concern</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* Sample Row
                 <tr>
                   <td>Cy Ganderton</td>
                   <td>Quality Control Specialist</td>
                 </tr> */}
-                {levels.map((element,index) => (
-                  <tr key={index}>
-                    <td>{element.range}</td>
-                    <td>{element.level}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            {levels.map((element, index) => (
+              <tr key={index} className={`${element.color}`}>
+                <td>{element.range}</td>
+                <td>{element.level}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <br></br>
+        <p>Data & API Source: <a href="https://aqicn.org/api/" className='text-blue-600 underline'>Worldwide Air Quality</a> </p>
       </div>
-        </div>
+    </div>
   )
 }
 
