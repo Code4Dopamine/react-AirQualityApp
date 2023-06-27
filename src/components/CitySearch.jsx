@@ -13,16 +13,17 @@ const CitySearch = ({ getAirQuality }) => {
     }
 
     return (
-        <form onSubmit={handleSearch} className='m-5'>
+        <form onSubmit={handleSearch} className='my-5 text-center'>
             <input
                 type="text"
-                className="border rounded-lg"
+                className="border rounded-lg mx-2 p-1 w-10/12 sm:w-6/12"
                 placeholder="Type in a City..."
                 name="search"
-                onChange={handleInputChange}>
+                onChange={handleInputChange}
+            >
             </input>
             <button
-                className='rounded-lg bg-blue-600 py-1 px-3 text-white'
+                className='rounded-lg bg-blue-600 m-2 p-2 text-white w-10/12 sm:w-auto'
                 type='submit'>
                 Submit
             </button>

@@ -4,6 +4,8 @@ import { useState } from 'react'
 import './App.css'
 import CitySearch from './components/CitySearch'
 import AirQualityCard from './components/AirQualityCard'
+import PollutantInfo from './components/PollutantInfo'
+import AirQualityLevelsTable from './components/AirQualityLevelsTable'
 // require('dotenv').config()
 
 
@@ -41,7 +43,7 @@ function App() {
 
   return (
     <>
-      <div className='bg-slate-300 h-screen pt-10 px-10'>
+      <div className='min-h-screen p-10'>
         <h1 className='text-4xl font-semibold'>Air Quality Index Checker</h1>
 
 
@@ -57,61 +59,14 @@ function App() {
           <>
             {/* Air Quality Card Component */}
             <AirQualityCard data={airQualityData} />
+            {/* Pollutant Info Card  */}
+            <PollutantInfo pollutant={airQualityData.dominentpol} />
           </>
         )}
 
 
-        {/* Card Design */}
-        {/* <div className="border w-2/3 mx-5">
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum pariatur libero quaerat nostrum sit aut expedita doloremque, ut ea repudiandae!
-          </p>
-        </div>
-        <div>
-          <p>
-            {temp}
-          </p>
-        </div> */}
-
-        {/* Table Component */}
-        <div className="border rounded-xl my-5">
-          <table className="table table-zebra">
-            {/* head */}
-            <thead>
-              <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* row 1 */}
-              <tr>
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>Blue</td>
-              </tr>
-              {/* row 2 */}
-              <tr>
-                <th>2</th>
-                <td>Hart Hagerty</td>
-                <td>Desktop Support Technician</td>
-                <td>Purple</td>
-              </tr>
-              {/* row 3 */}
-              <tr>
-                <th>3</th>
-                <td>Brice Swyre</td>
-                <td>Tax Accountant</td>
-                <td>Red</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-
+        {/* Air Quality Level - Table Component */}
+        <AirQualityLevelsTable />
 
       </div>
     </>

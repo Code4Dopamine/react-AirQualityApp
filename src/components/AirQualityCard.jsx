@@ -4,7 +4,7 @@ const getCardColor = (aqi) => {
     if (aqi <= 50) {
         // Good
         // return 'bg-success text-white';
-        return 'bg-emerald-600 text-white';
+        return 'bg-emerald-700 text-white';
     } else if (aqi <= 100) {
         // Moderate
         return 'bg-yellow-500';
@@ -16,28 +16,28 @@ const getCardColor = (aqi) => {
         return 'bg-rose-700 text-white';
     } else if (aqi <= 300) {
         //Very Unhealthy
-        return 'bg-red-900 text-white';
+        return 'bg-purple-700 text-white';
     } else {
-        return 'bg-hazardous ';
+        return 'bg-red-900 text-white';
     }
 }
 
 const AirQualityCard = ({ data }) => {
     const { aqi, city, dominentpol, time } = data
-    // const color = getCardColor(aqi)
+    const color = getCardColor(aqi)
     //Color Test
-    const color = getCardColor(200)
+    // const color = getCardColor(200)
 
     return (
         <>
             {/* Color Test */}
             <div>
-                <button className="button">Good</button>
-                <button className="button">Moderate</button>
-                <button className="button">Unhealthy(s)</button>
-                <button className="button">Unhealthy</button>
-                <button className="button">Very UnHealthy</button>
-                <button className="button">Hazardous</button>
+                <button className={`button ${getCardColor(50)}`}>Good</button>
+                <button className={`button ${getCardColor(100)}`}>Moderate</button>
+                <button className={`button ${getCardColor(150)}`}>Unhealthy(s)</button>
+                <button className={`button ${getCardColor(200)}`}>Unhealthy</button>
+                <button className={`button ${getCardColor(300)}`}>Very UnHealthy</button>
+                <button className={`button ${getCardColor(350)}`}>Hazardous</button>
             </div>
             {/* <div className={`p-5 border rounded-xl my-2 `}> */}
             <div className={`card shadow-xl ${color}`}>
