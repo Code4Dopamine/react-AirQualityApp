@@ -38,14 +38,14 @@ function App() {
   return (
     <>
       <div className='min-h-screen p-10'>
-        <h1 className='text-4xl font-semibold'>Air Quality Index Checker</h1>
+        <h1 className='text-4xl font-semibold sm:w-10/12'>Air Quality Index Checker</h1>
 
         {/* Search Component */}
         <CitySearch getAirQuality={getAirQuality} />
 
         {error && (
-          <div className='card flex items-center justify-center bg-slate-200 h-20' role='alert'>
-            {error}
+          <div className='flex items-center justify-center' role='alert'>
+            <p className='card flex items-center justify-center w-10/12 p-5 h-auto text-center sm:w-auto sm:h-20 bg-slate-200 border-2 border-red-500'>{error}</p>
           </div>
         )}
         {
@@ -60,8 +60,9 @@ function App() {
               (<>
               </>) :
               (<>
-                <div className="card flex items-center justify-center bg-slate-200 h-20">
-                  <p>Type in a city name above to show Air Quality Info</p>
+                {/* Placeholder */}
+                <div className="flex items-center justify-center">
+                  <p className='card flex items-center justify-center w-10/12 p-5 h-auto text-center sm:w-auto sm:h-20 bg-slate-200'>Type in a city name above to show Air Quality Info</p>
                 </div>
               </>))
         }

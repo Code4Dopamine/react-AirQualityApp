@@ -22,12 +22,13 @@ const PollutantInfo = ({ pollutant }) => {
 
 
   return (
-    <div className='card border-2 border-slate-400 my-5 bg-white'>
-      <div className="card-body">
-        <h4 className='card-title'>{pollutant.toUpperCase()} Information</h4>
-        <p>{getPollutantInfo(pollutant)}</p>
+    <div className='flex items-center justify-center'>
+      <div className='card border-2 border-slate-400 my-5 bg-white w-full sm:w-10/12'>
+        <div className="card-body">
+          <h4 className='card-title'>{pollutant.toUpperCase()} Information</h4>
+          <p>{getPollutantInfo(pollutant)}</p>
+        </div>
       </div>
-
     </div>
   )
 }

@@ -11,36 +11,37 @@ const AirQualityLevelsTable = () => {
   ];
 
   return (
-    <div className="border rounded-xl my-5 card">
-
-      <div className='card-body'>
-        <h3 className='card-title'>Air Quality Levels</h3>
-        <div className="divider"></div>
-        <table className="table bg-white">
-          {/* head */}
-          <thead>
-            <tr>
-              {/* <th></th> */}
-              <th className='text-lg text-neutral-700 font-semibold'>AQI Range</th>
-              <th className='text-lg text-neutral-700 font-semibold whitespace-pre-wrap'> Level of Health Concern</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* Sample Row
-                <tr>
-                  <td>Cy Ganderton</td>
-                  <td>Quality Control Specialist</td>
-                </tr> */}
-            {levels.map((element, index) => (
-              <tr key={index} className={`${element.color}`}>
-                <td>{element.range}</td>
-                <td>{element.level}</td>
+    <div className='flex justify-center items-center'>
+      <div className="border rounded-xl my-5 card sm:w-10/12">
+        <div className='card-body'>
+          <h3 className='card-title'>Air Quality Levels</h3>
+          <div className="divider"></div>
+          <table className="table bg-white">
+            {/* head */}
+            <thead>
+              <tr>
+                {/* <th></th> */}
+                <th className='text-lg text-neutral-700 font-semibold pre-wrap'>AQI Range</th>
+                <th className='text-lg text-neutral-700 text-center sm:text-left font-semibold whitespace-pre-wrap'> Level of Health Concern</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <br></br>
-        <p>Data & API Source: <a href="https://aqicn.org/api/" className='text-blue-600 underline'>Worldwide Air Quality</a> </p>
+            </thead>
+            <tbody>
+              {/* Sample Row
+                    <tr>
+                      <td>Cy Ganderton</td>
+                      <td>Quality Control Specialist</td>
+                    </tr> */}
+              {levels.map((element, index) => (
+                <tr key={index} className={`${element.color}`}>
+                  <td className='w-1/3 sm:w-1/4'>{element.range}</td>
+                  <td>{element.level}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <br></br>
+          <p>Data & API Source: <a href="https://aqicn.org/api/" className='text-blue-600 underline'>Worldwide Air Quality</a> </p>
+        </div>
       </div>
     </div>
   )
