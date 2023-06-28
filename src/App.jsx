@@ -16,7 +16,7 @@ function App() {
 
   const getAirQuality = async (city) => {
     try {
-      const response = await fetch(`http://api.waqi.info/feed/${city}/?token=${import.meta.env.VITE_API_KEY}`)
+      const response = await fetch(`https://api.waqi.info/feed/${city}/?token=${import.meta.env.VITE_API_KEY}`)
 
       const data = await response.json()
       console.log(data)
